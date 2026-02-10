@@ -2,7 +2,7 @@ const token = localStorage.getItem("token");
 if (!token) window.location.href = "login.html";
 
 async function fetchPatients() {
-    const res = await fetch("http://localhost:5000/api/users/patients", {
+    const res = await fetch("https://backfainalp-8.onrender.com/users/patients", {
         headers: { "Authorization": "Bearer " + token }
     });
     const patients = await res.json();
@@ -17,7 +17,7 @@ async function fetchPatients() {
 }
 
 async function fetchMedicines() {
-    const res = await fetch("http://localhost:5000/api/medicines");
+    const res = await fetch("https://backfainalp-8.onrender.com/medicines");
     const meds = await res.json();
     const select = document.getElementById("medicineSelect");
     select.innerHTML = "";
@@ -27,7 +27,7 @@ async function fetchMedicines() {
 }
 
 async function fetchPrescriptions() {
-    const res = await fetch("http://localhost:5000/api/prescriptions/my", {
+    const res = await fetch("https://backfainalp-8.onrender.com/prescriptions/my", {
         headers: { "Authorization": "Bearer " + token }
     });
     const prescriptions = await res.json();
@@ -56,7 +56,7 @@ async function assignMedicine() {
     const schedule = document.getElementById("schedule").value;
     if (!patient || !medicine || !dosage || !schedule) return alert("Fill all fields");
 
-    const res = await fetch("http://localhost:5000/api/prescriptions", {
+    const res = await fetch("https://backfainalp-8.onrender.com/prescriptions", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -74,7 +74,7 @@ async function updatePrescription(id) {
     const dosage = prompt("Enter new dosage:");
     const schedule = prompt("Enter new schedule:");
     if (!dosage || !schedule) return;
-    await fetch(`http://localhost:5000/api/prescriptions/${id}`, {
+    await fetch(`https://backfainalp-8.onrender.com/prescriptions/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -87,7 +87,7 @@ async function updatePrescription(id) {
 
 async function deletePrescription(id) {
     if (!confirm("Delete this prescription?")) return;
-    await fetch(`http://localhost:5000/api/prescriptions/${id}`, {
+    await fetch(`https://backfainalp-8.onrender.com/prescriptions/${id}`, {
         method: "DELETE",
         headers: { "Authorization": "Bearer " + token }
     });
@@ -97,6 +97,7 @@ async function deletePrescription(id) {
 fetchPatients();
 fetchMedicines();
 fetchPrescriptions();
+
 
 
 
