@@ -1,4 +1,4 @@
-const apiUrl = "http://localhost:5000/api/auth";
+const apiUrl = "https://backfainalp-8.onrender.com";
 
 async function register() {
     const name = document.getElementById("name").value;
@@ -41,3 +41,4 @@ async function login() {
         alert(data.message);
     }
 }
+
