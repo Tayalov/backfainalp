@@ -3,7 +3,7 @@ const token = localStorage.getItem("token");
 if (!token) window.location.href = "login.html";
 
 async function fetchPrescriptions() {
-    const res = await fetch("http://localhost:5000/api/prescriptions/my", {
+    const res = await fetch("https://backfainalp-8.onrender.com/prescriptions/my", {
         headers: { "Authorization": "Bearer " + token }
     });
     const prescriptions = await res.json();
@@ -23,7 +23,7 @@ async function fetchPrescriptions() {
 }
 
 async function fetchAllMedicines() {
-    const res = await fetch("http://localhost:5000/api/medicines");
+    const res = await fetch("https://backfainalp-8.onrender.com/medicines");
     const meds = await res.json();
     const container = document.getElementById("medicines");
     container.innerHTML = "";
@@ -72,7 +72,7 @@ async function reviewMedicine(medicineId) {
     const text = prompt("Write your review:");
     const rating = prompt("Give rating 1-5:");
     if (!text || !rating) return;
-    await fetch("http://localhost:5000/api/reviews", {
+    await fetch("https://backfainalp-8.onrender.com/reviews", {
         method: "POST",
         headers: { 
             "Content-Type": "application/json",
@@ -86,3 +86,4 @@ async function reviewMedicine(medicineId) {
 fetchPrescriptions();
 fetchAllMedicines();
 showCart();
+
