@@ -2,7 +2,7 @@ const token = localStorage.getItem("token");
 if (!token) window.location.href = "login.html";
 
 async function fetchMedicines() {
-    const res = await fetch("https://backfainalp-8.onrender.com");
+    const res = await fetch("https://backfainalp-8.onrender.com/medicines");
     const meds = await res.json();
     const container = document.getElementById("medicines");
     container.innerHTML = "";
@@ -29,7 +29,7 @@ async function addMedicine() {
     const image = document.getElementById("image").value;
     const price = document.getElementById("price").value;
 
-    const res = await fetch("http://localhost:5000/api/medicines", {
+    const res = await fetch("https://backfainalp-8.onrender.com/medicines", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -60,7 +60,7 @@ async function updateMedicine(id) {
 
 async function deleteMedicine(id) {
     if (!confirm("Delete this medicine?")) return;
-    await fetch(`https://backfainalp-8.onrender.com/${id}`, {
+    await fetch(`https://backfainalp-8.onrender.com/medicines/${id}`, {
         method: "DELETE",
         headers: { "Authorization": "Bearer " + token }
     });
@@ -68,4 +68,5 @@ async function deleteMedicine(id) {
 }
 
 fetchMedicines();
+
 
