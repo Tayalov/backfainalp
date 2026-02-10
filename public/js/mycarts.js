@@ -2,7 +2,7 @@ const token = localStorage.getItem("token");
 if (!token) window.location.href = "login.html";
 
 async function fetchCart() {
-    const res = await fetch("http://localhost:5000/api/cart/my", {
+    const res = await fetch("https://backfainalp-8.onrender.com/cart/my", {
         headers: { "Authorization": "Bearer " + token }
     });
     const cart = await res.json();
@@ -34,7 +34,7 @@ async function fetchCart() {
 async function updateCart(id) {
     const dosage = document.getElementById(`dosage-${id}`).value;
     const schedule = document.getElementById(`schedule-${id}`).value;
-    await fetch(`http://localhost:5000/api/cart/${id}`, {
+    await fetch(`https://backfainalp-8.onrender.com/cart/${id}`, {
         method: "PUT",
         headers: { 
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ async function updateCart(id) {
 
 async function deleteCart(id) {
     if (!confirm("Delete this item?")) return;
-    await fetch(`http://localhost:5000/api/cart/${id}`, {
+    await fetch(`https://backfainalp-8.onrender.com/cart/${id}`, {
         method: "DELETE",
         headers: { "Authorization": "Bearer " + token }
     });
@@ -55,3 +55,4 @@ async function deleteCart(id) {
 }
 
 fetchCart();
+
