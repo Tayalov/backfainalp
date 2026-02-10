@@ -1,4 +1,4 @@
-const apiUrl = "https://backfainalp-8.onrender.com";
+const apiUrl = "https://backfainalp-8.onrender.com/auth";
 
 async function register() {
     const name = document.getElementById("name").value;
