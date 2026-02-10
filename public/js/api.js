@@ -1,5 +1,5 @@
 const token = localStorage.getItem("token");
-const API_URL_BASE = "http://localhost:5000/api";
+const API_URL_BASE = "https://backfainalp-8.onrender.com";
 
 async function fetchAPI(endpoint, options = {}) {
     options.headers = {
@@ -10,3 +10,4 @@ async function fetchAPI(endpoint, options = {}) {
     const res = await fetch(`${API_URL_BASE}/${endpoint}`, options);
     return res.json();
 }
+
