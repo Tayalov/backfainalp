@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 
 async function fetchMedicines() {
-    const res = await fetch("http://localhost:5000/api/medicines", {
+    const res = await fetch("https://backfainalp-8.onrender.com/medicines", {
         headers: token ? { "Authorization": "Bearer " + token } : {}
     });
     const meds = await res.json();
@@ -23,5 +23,6 @@ async function fetchMedicines() {
 }
 
 fetchMedicines();
+
 
 
